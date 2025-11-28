@@ -1,0 +1,35 @@
+<!-- assets/neon-hero.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="220" viewBox="0 0 1200 220" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="g1" x1="0" x2="1">
+      <stop offset="0" stop-color="#00f0ff"/>
+      <stop offset="0.5" stop-color="#8A2BE2"/>
+      <stop offset="1" stop-color="#ff4fd8"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <style>
+      .title { font: 700 34px 'Segoe UI', Roboto, sans-serif; fill: url(#g1); stroke: rgba(255,255,255,0.03); paint-order: stroke; filter: url(#glow); }
+      .sub { font: 400 14px 'Segoe UI', Roboto, sans-serif; fill: #9aa6ff; opacity: 0.9; }
+      .orb { fill: none; stroke: url(#g1); stroke-width: 2; stroke-linecap:round; }
+    </style>
+  </defs>
+
+  <rect width="100%" height="100%" fill="#06060a" rx="6"/>
+
+  <g transform="translate(1100,40)" style="transform-origin:1100px 40px">
+    <circle r="36" class="orb" stroke-opacity="0.14" />
+    <g transform="rotate(0)"><circle r="6" fill="#00f0ff" cx="36" cy="0" /></g>
+    <g transform="rotate(120)"><circle r="5" fill="#8A2BE2" cx="36" cy="0" /></g>
+    <g transform="rotate(240)"><circle r="4" fill="#ff4fd8" cx="36" cy="0" /></g>
+    <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 1100 40" to="360 1100 40" dur="18s" repeatCount="indefinite"/>
+  </g>
+
+  <text x="48" y="92" class="title">ArrudaDev7 — Digital Universe</text>
+  <text x="48" y="128" class="sub">Full-Stack Developer • Java • Python • React • Databases • Neon vibes</text>
+</svg>

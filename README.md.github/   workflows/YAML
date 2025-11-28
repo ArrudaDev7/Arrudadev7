@@ -1,1 +1,41 @@
+name: Generate Pac-Man Contribution Graph
+
+on:
+  schedule:
+    - cron: '0 0 * * *'   # roda todo dia às 00:00 UTC
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  generate:
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout (needed for commit)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Generate pacman-contribution-graph (SVG)
+        uses: yoshi389111/github-profile-pacman@main
+        with:
+          github_name: ArrudaDev7
+          color_theme: purple
+
+      - name: Commit & Push Pac-Man Graph
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # certificar que existe a pasta output
+          mkdir -p output
+          git add output/*
+          git commit -m "chore: update pacman contribution graph" || echo "No changes to commit"
+          git push origin HEAD:main
 
